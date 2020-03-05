@@ -5,9 +5,11 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
-import androidx.room.Update;
+import androidx.room.Transaction;import androidx.room.Update;
 
 import java.util.List;
+
+import fr.afe.majordome.SpaceTasksDetails;
 
 @Dao
 public interface SpaceDAO {
@@ -25,4 +27,8 @@ public interface SpaceDAO {
 
     @Query("DELETE FROM space")
     void deleteAll();
+
+    @Transaction
+    @Query("SELECT * FROM space")
+    LiveData<List<SpaceTasksDetails>> loadSpacesWithTasks();
 }

@@ -56,7 +56,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 // If you want to start with more words, just add them.
                 SpaceDAO dao = INSTANCE.spaceDao();
 
-                dao.deleteAll();
+                //dao.deleteAll();
 
                 SpaceEntity space = new SpaceEntity();
                 space.spaceName = "Salon";

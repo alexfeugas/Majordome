@@ -58,11 +58,12 @@ public class SpaceActivity extends AppCompatActivity {
             }
         });
 
+
         FloatingActionButton fab = findViewById(R.id.fabAddTask);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SpaceActivity.this, NewSpaceActivity.class);
+                Intent intent = new Intent(SpaceActivity.this, TaskActivity.class);
                 startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
             }
         });
@@ -72,11 +73,11 @@ public class SpaceActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            TaskEntity taskEntity = new TaskEntity();
+            TaskEntity taskEntity = (TaskEntity) data.getSerializableExtra("EXTRA_REPLY");
             taskEntity.referentTaskKind = spaceEntity.spaceId;
-            taskEntity.taskName = data.getStringExtra(NewSpaceActivity.EXTRA_REPLY);
             tasksViewModel.insert(taskEntity);
-            Log.d("DEBUG", "spaceId for task = " + spaceEntity.spaceId);
+            Log.d("DEBUG",
+                    "spaceId for task = " + spaceEntity.spaceId);
         } else {
             Toast.makeText(
                     getApplicationContext(),
