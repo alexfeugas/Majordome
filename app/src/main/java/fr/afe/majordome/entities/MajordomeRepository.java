@@ -201,6 +201,12 @@ public class MajordomeRepository {
         });
     }
 
+    public void deleteSpace(SpaceEntity spaceEntity) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            getSpaceDao().delete(spaceEntity);
+        });
+    }
+
     public LiveData<List<TaskEntity>>  getTasksBySpaceId(int taskId) {
         return getTaskDao().findBySpaceId(taskId);
     }

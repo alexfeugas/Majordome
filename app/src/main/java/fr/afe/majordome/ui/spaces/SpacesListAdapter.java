@@ -30,9 +30,11 @@ public class SpacesListAdapter extends RecyclerView.Adapter<SpacesListAdapter.Sp
     private List<SpaceEntity> mSpaces; // Cached copy of spaces
     private final View.OnClickListener mOnClickListener = null;
     private Context mContext;
-    SpacesListAdapter(Context context) {
+    private SpacesViewModel mSpacesViewModel;
+    SpacesListAdapter(Context context, SpacesViewModel spacesViewModel) {
         mInflater = LayoutInflater.from(context);
         mContext = context;
+        mSpacesViewModel = spacesViewModel;
     }
 
 
@@ -44,11 +46,11 @@ public class SpacesListAdapter extends RecyclerView.Adapter<SpacesListAdapter.Sp
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 int itemPosition = ((RecyclerView)parent).getChildLayoutPosition((View)view.getParent());
-
                 SpaceEntity current = mSpaces.get(itemPosition);
-                Toast.makeText(mContext, current.spaceId+ " " +current.spaceName, Toast.LENGTH_LONG).show();
+                //Toast.makeText(mContext, current.spaceId+ " " +current.spaceName, Toast.LENGTH_LONG).show();
+                //FIXME: ask for confirmation
+                mSpacesViewModel.delete(current);
             }
         });
         return new SpaceViewHolder(itemView);

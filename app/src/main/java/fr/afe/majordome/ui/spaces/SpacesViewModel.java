@@ -31,4 +31,8 @@ public class SpacesViewModel extends AndroidViewModel{
     public void insert(SpaceEntity space) {
         repository.insertSpace(space);
     }
+
+    public void delete(SpaceEntity spa) {
+        repository.deleteSpace(spa);
+    }
 }

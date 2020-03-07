@@ -43,17 +43,13 @@ public class SpacesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Log.v("SpacesFrgment", "into Create View");
-        //spacesViewModel =
-        //        ViewModelProviders.of(this).get(SpacesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        recyclerView = root.findViewById(R.id.recyclerview); //text_share
-        final SpacesListAdapter adapter = new SpacesListAdapter(getContext());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        configureOnClickRecyclerView();
+        recyclerView = root.findViewById(R.id.recyclerview);
 
         // Get a new or existing ViewModel from the ViewModelProvider.
         spacesViewModel = ViewModelProviders.of(this).get(SpacesViewModel.class);
+        final SpacesListAdapter adapter = new SpacesListAdapter(getContext(), spacesViewModel);
+
         spacesViewModel.getAllSpaces().observe(this, new Observer<List<SpaceEntity>>() {
             @Override
             public void onChanged(List<SpaceEntity> spaceEntities) {
@@ -61,6 +57,12 @@ public class SpacesFragment extends Fragment {
                 adapter.setSpaces(spaceEntities);
             }
         });
+
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        configureOnClickRecyclerView();
+
 
         FloatingActionButton fab = root.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
