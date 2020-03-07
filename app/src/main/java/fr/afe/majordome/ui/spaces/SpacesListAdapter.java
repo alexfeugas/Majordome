@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,14 +28,29 @@ public class SpacesListAdapter extends RecyclerView.Adapter<SpacesListAdapter.Sp
 
     private final LayoutInflater mInflater;
     private List<SpaceEntity> mSpaces; // Cached copy of spaces
-
-    SpacesListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+    private final View.OnClickListener mOnClickListener = null;
+    private Context mContext;
+    SpacesListAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
+        mContext = context;
+    }
 
 
     @NonNull
     @Override
     public SpaceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.recyclerview_item, parent, false);
+        View button = itemView.findViewById(R.id.imageButtonDelete);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int itemPosition = ((RecyclerView)parent).getChildLayoutPosition((View)view.getParent());
+
+                SpaceEntity current = mSpaces.get(itemPosition);
+                Toast.makeText(mContext, current.spaceId+ " " +current.spaceName, Toast.LENGTH_LONG).show();
+            }
+        });
         return new SpaceViewHolder(itemView);
     }
 

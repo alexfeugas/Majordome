@@ -43,8 +43,8 @@ public class SpacesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Log.v("SpacesFrgment", "into Create View");
-        spacesViewModel =
-                ViewModelProviders.of(this).get(SpacesViewModel.class);
+        //spacesViewModel =
+        //        ViewModelProviders.of(this).get(SpacesViewModel.class);
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
         recyclerView = root.findViewById(R.id.recyclerview); //text_share
         final SpacesListAdapter adapter = new SpacesListAdapter(getContext());
