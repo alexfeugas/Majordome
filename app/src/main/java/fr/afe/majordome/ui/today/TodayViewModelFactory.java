@@ -1,4 +1,4 @@
-package fr.afe.majordome.ui.home;
+package fr.afe.majordome.ui.today;
 
 import android.app.Application;
 
@@ -6,12 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-public class HomeViewModelFactory implements ViewModelProvider.Factory {
+public class TodayViewModelFactory implements ViewModelProvider.Factory {
 
     private Application mApplication;
 
 
-    public HomeViewModelFactory(Application application) {
+    public TodayViewModelFactory(Application application) {
         mApplication = application;
     }
 

@@ -1,4 +1,4 @@
-package fr.afe.majordome.ui.home;
+package fr.afe.majordome.ui.stocks;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import fr.afe.majordome.R;
 
-public class HomeFragment extends Fragment {
+public class StocksFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private StocksViewModel toolsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(this, new Observer<String>() {
+        toolsViewModel =
+                ViewModelProviders.of(this).get(StocksViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_stocks, container, false);
+        final TextView textView = root.findViewById(R.id.text_tools);
+        toolsViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

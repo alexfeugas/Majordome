@@ -1,4 +1,4 @@
-package fr.afe.majordome.ui.share;
+package fr.afe.majordome.ui.membres;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,15 +14,15 @@ import androidx.lifecycle.ViewModelProviders;
 
 import fr.afe.majordome.R;
 
-public class ShareFragment extends Fragment {
+public class MembresFragment extends Fragment {
 
-    private ShareViewModel shareViewModel;
+    private MembresViewModel shareViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         shareViewModel =
-                ViewModelProviders.of(this).get(ShareViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_share, container, false);
+                ViewModelProviders.of(this).get(MembresViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_membres, container, false);
         final TextView textView = root.findViewById(R.id.text_share);
         shareViewModel.getText().observe(this, new Observer<String>() {
             @Override

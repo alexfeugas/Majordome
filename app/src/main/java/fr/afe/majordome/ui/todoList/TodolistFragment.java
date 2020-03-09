@@ -22,7 +22,7 @@ public class TodolistFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         todolistViewModel =
                 ViewModelProviders.of(this).get(TodolistViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+        View root = inflater.inflate(R.layout.fragment_courses, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
         todolistViewModel.getText().observe(this, new Observer<String>() {
             @Override
