@@ -1,4 +1,4 @@
-package fr.afe.majordome.ui.todoList;
+package fr.afe.majordome.ui.missionStore;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import fr.afe.majordome.R;
 
-public class TodolistFragment extends Fragment {
+public class MissionStoreFragment extends Fragment {
 
-    private TodolistViewModel todolistViewModel;
+    private MissionStoreViewModel sendViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        todolistViewModel =
-                ViewModelProviders.of(this).get(TodolistViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_courses, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        todolistViewModel.getText().observe(this, new Observer<String>() {
+        sendViewModel =
+                ViewModelProviders.of(this).get(MissionStoreViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_mission_store, container, false);
+        final TextView textView = root.findViewById(R.id.text_send);
+        sendViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

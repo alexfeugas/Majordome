@@ -13,7 +13,7 @@
     <string name="menu_todolist">Liste de Courses</string>
     <string name="menu_stocks">Stocks</string>
     <string name="menu_manage">Membres</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_send">Mission Store</string>
 
     <string name="hint_spaces">Espaces...</string>
     <string name="button_save">Enregistrer</string>

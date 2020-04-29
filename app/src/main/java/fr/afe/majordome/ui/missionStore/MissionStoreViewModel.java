@@ -1,16 +1,16 @@
-package fr.afe.majordome.ui.todoList;
+package fr.afe.majordome.ui.missionStore;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class TodolistViewModel extends ViewModel {
+public class MissionStoreViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public TodolistViewModel() {
+    public MissionStoreViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is send fragment");
     }
 
     public LiveData<String> getText() {

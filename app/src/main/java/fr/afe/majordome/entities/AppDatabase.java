@@ -57,13 +57,6 @@ public abstract class AppDatabase extends RoomDatabase {
                 SpaceDAO dao = INSTANCE.spaceDao();
 
                 //dao.deleteAll();
-
-                SpaceEntity space = new SpaceEntity();
-                space.spaceName = "Salon";
-                dao.insert(space);
-                space = new SpaceEntity();
-                space.spaceName = "Cuisine";
-                dao.insert(space);
             });
         }
     };
