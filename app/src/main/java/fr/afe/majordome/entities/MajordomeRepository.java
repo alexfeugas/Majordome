@@ -32,6 +32,9 @@ public class MajordomeRepository {
     private UserDAO mUserDao;
     private LiveData<List<UserEntity>> mAllUsers;
 
+    private StockDAO mStockDao;
+    private LiveData<List<StockEntity>> mAllStocks;
+
     public MajordomeRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         setProjectDao(db.projectDAO());
@@ -57,6 +60,9 @@ public class MajordomeRepository {
 
         setUserDao(db.userDAO());
         setAllUsers(getUserDao().getAll());
+
+        setStockDao(db.stockDAO());
+        setAllStocks(getStockDao().getAll());
 
     }
 
@@ -209,5 +215,34 @@ public class MajordomeRepository {
 
     public LiveData<List<TaskEntity>>  getTasksBySpaceId(int taskId) {
         return getTaskDao().findBySpaceId(taskId);
+    }
+
+
+    public StockDAO getStockDao() {
+        return mStockDao;
+    }
+
+    public void setStockDao(StockDAO mStockDao) {
+        this.mStockDao = mStockDao;
+    }
+
+    public LiveData<List<StockEntity>> getAllStocks() {
+        return mAllStocks;
+    }
+
+    public void setAllStocks(LiveData<List<StockEntity>> mAllStocks) {
+        this.mAllStocks = mAllStocks;
+    }
+
+    public void insertStock(StockEntity stockEntity) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            getStockDao().insert(stockEntity);
+        });
+    }
+
+    public void deleteStock(StockEntity stockEntity) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            getStockDao().delete(stockEntity);
+        });
     }
 }

@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
 @Database(entities = {ProjectEntity.class, ProjectMemberEntity.class,
         SpaceEntity.class, SpaceKindEntity.class,
         TaskEntity.class, TaskExecutionEntity.class,
-        TaskKindEntity.class, UserEntity.class}, version = 1)
+        TaskKindEntity.class, UserEntity.class, StockEntity.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract ProjectDAO projectDAO();
     public abstract ProjectMemberDAO projectMemberDAO();
@@ -24,6 +24,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract TaskExecutionDAO taskExecutionDAO();
     public abstract TaskKindDAO taskKindDAO();
     public abstract UserDAO userDAO();
+    public abstract StockDAO stockDAO();
 
 
     private static volatile AppDatabase INSTANCE;

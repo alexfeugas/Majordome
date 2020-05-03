@@ -1,10 +1,12 @@
 package fr.afe.majordome.ui.stocks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,12 +16,24 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
+import fr.afe.majordome.NewSpaceActivity;
+import fr.afe.majordome.NewStockActivity;
 import fr.afe.majordome.R;
+import fr.afe.majordome.SpaceActivity;
+import fr.afe.majordome.TaskActivity;
+import fr.afe.majordome.entities.SpaceEntity;
 import fr.afe.majordome.entities.StockEntity;
+import fr.afe.majordome.entities.TaskEntity;
+
+import static android.app.Activity.RESULT_OK;
+import static fr.afe.majordome.ui.spaces.SpacesFragment.NEW_WORD_ACTIVITY_REQUEST_CODE;
 
 public class StocksFragment extends Fragment {
+    public static final int NEW_STOCK_ACTIVITY_REQUEST_CODE = 1;
 
     private StocksViewModel stocksViewModel;
     private RecyclerView recyclerView;
@@ -54,6 +68,31 @@ public class StocksFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
+
+        FloatingActionButton fab = root.findViewById(R.id.fabStock);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), NewStockActivity.class);
+                startActivityForResult(intent, NEW_STOCK_ACTIVITY_REQUEST_CODE);
+            }
+        });
         return root;
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NEW_STOCK_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            StockEntity stockEntity = (StockEntity) data.getSerializableExtra("EXTRA_REPLY");
+            if (stockEntity != null) {
+                stocksViewModel.insert(stockEntity);
+            }
+        } else {
+            Toast.makeText(
+                    getContext(),
+                    R.string.empty_not_saved,
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }
