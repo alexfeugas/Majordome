@@ -240,6 +240,12 @@ public class MajordomeRepository {
         });
     }
 
+    public void updateStock(StockEntity stockEntity) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            getStockDao().update(stockEntity);
+        });
+    }
+
     public void deleteStock(StockEntity stockEntity) {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             getStockDao().delete(stockEntity);

@@ -13,5 +13,9 @@ public class StockEntity implements Serializable {
     @ColumnInfo(name = "StockId")
     public int stockId;
 
+    @ColumnInfo(name = "StockName")
     public String stockName;
+
+    @ColumnInfo(name = "Quantity")
+    public int quantity;
 }

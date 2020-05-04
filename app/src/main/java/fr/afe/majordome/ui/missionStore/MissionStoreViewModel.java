@@ -10,7 +10,7 @@ public class MissionStoreViewModel extends ViewModel {
 
     public MissionStoreViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is send fragment");
+        mText.setValue("Available Missions");
     }
 
     public LiveData<String> getText() {

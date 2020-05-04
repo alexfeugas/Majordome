@@ -21,7 +21,7 @@ public class TodayViewModel extends ViewModel {
 
     public TodayViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("Tâches à effectuer");
 
         mAllTasks = new MutableLiveData<>();
         List<TaskEntity> list = new ArrayList<>();

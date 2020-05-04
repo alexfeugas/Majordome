@@ -26,7 +26,7 @@ public class StocksViewModel extends AndroidViewModel {
         super(application);
         repository = new MajordomeRepository(application);
         mText = new MutableLiveData<>();
-        mText.setValue("This is Stocks fragment");
+        mText.setValue("Etat des stocks");
 
         mAllStocks = new MutableLiveData<>();
         mAllStocks = repository.getAllStocks();
@@ -53,6 +53,10 @@ public class StocksViewModel extends AndroidViewModel {
 
     public void insert(StockEntity stock) {
         repository.insertStock(stock);
+    }
+
+    public void update(StockEntity stock) {
+        repository.updateStock(stock);
     }
 
     public void delete(StockEntity stock) {

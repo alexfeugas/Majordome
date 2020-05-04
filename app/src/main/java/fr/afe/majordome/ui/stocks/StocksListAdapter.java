@@ -21,9 +21,11 @@ public class StocksListAdapter extends RecyclerView.Adapter<fr.afe.majordome.ui.
 
     public class StockViewHolder extends RecyclerView.ViewHolder {
         private final TextView stockItemView;
+        private final TextView stockQuantityItemView;
         public StockViewHolder(@NonNull View itemView) {
             super(itemView);
             stockItemView = itemView.findViewById(R.id.stock_item_name);
+            stockQuantityItemView = itemView.findViewById(R.id.stock_current_quantity);
         }
     }
 
@@ -63,6 +65,7 @@ public class StocksListAdapter extends RecyclerView.Adapter<fr.afe.majordome.ui.
         if (mStocks != null) {
             StockEntity current = mStocks.get(position);
             holder.stockItemView.setText(current.stockName);
+            holder.stockQuantityItemView.setText("" + current.quantity);
         } else {
             // Covers the case of data not being ready yet.
             holder.stockItemView.setText("No stock yet");

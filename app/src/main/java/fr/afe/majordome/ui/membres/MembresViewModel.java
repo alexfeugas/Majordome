@@ -10,7 +10,7 @@ public class MembresViewModel extends ViewModel {
 
     public MembresViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is share fragment");
+        mText.setValue("Membres du projet");
     }
 
     public LiveData<String> getText() {

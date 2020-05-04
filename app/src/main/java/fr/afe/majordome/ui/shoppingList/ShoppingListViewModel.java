@@ -20,7 +20,7 @@ public class ShoppingListViewModel extends ViewModel {
 
     public ShoppingListViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("Liste des achats à faire");
 
         mAllTasks = new MutableLiveData<>();
         List<TaskEntity> list = new ArrayList<>();
